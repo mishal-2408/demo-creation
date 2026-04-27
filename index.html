@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">Sunrise Blog</div>
+        <div class="controls">
+            <input id="search" placeholder="Search blogs..." aria-label="Search blogs">
+            <select id="sort">
+                <option value="new">Newest</option>
+                <option value="old">Oldest</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="panel create-panel">
+            <h2>Create Post</h2>
+            <input type="text" id="title" placeholder="Blog Title">
+            <textarea id="content" rows="8" placeholder="Write your blog..."></textarea>
+            <div class="row">
+                <button id="publishBtn" class="primary">Publish</button>
+                <button id="clearBtn" class="muted">Clear</button>
+            </div>
+        </aside>
+
+        <section class="panel list-panel">
+            <div class="panel-header">
+                <h2>All Posts</h2>
+                <div id="count" class="muted">0 posts</div>
+            </div>
+            <div id="blogList" class="grid"></div>
+        </section>
+    </main>
+
+    <!-- Modal for view / edit -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <button id="modalClose" class="modal-close">×</button>
+            <h3 id="modalTitle"></h3>
+            <p id="modalContent"></p>
+            <div class="modal-actions">
+                <button id="modalDelete" class="danger">Delete</button>
+                <button id="modalEdit" class="primary">Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
