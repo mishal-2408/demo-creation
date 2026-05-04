@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+# Step 1: Checkout code from repo
+- task: Checkout@1
+  displayName: "Checkout Source Code"
+
+# Step 2: Show project files (for verification)
+- script: |
+    echo "Listing project files..."
+    ls -la
+  displayName: "Display Files"
+
+# Step 3: Validate HTML file
+- script: |
+    echo "Checking index.html..."
+    if [ -f index.html ]; then
+      echo "index.html found ✅"
+    else
+      echo "index.html not found ❌"
+      exit 1
+    fi
+  displayName: "Validate Frontend Files"
+
+# Step 4: Simulate Build
+- script: |
+    echo "Building frontend project..."
+    echo "No compilation needed for HTML/CSS/JS"
+  displayName: "Build Step"
+
+# Step 5: Simulate Deployment
+- script: |
+    echo "Deploying Blog Frontend..."
+    echo "Deployment successful ✅"
+  displayName: "Deploy Step"
