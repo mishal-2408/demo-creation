@@ -6,17 +6,17 @@ pool:
 
 steps:
 
-# Step 1: Checkout code from repo
-- task: Checkout@1
-  displayName: "Checkout Source Code"
+# Correct checkout step
+- checkout: self
+  displayName: "Checkout Code"
 
-# Step 2: Show project files (for verification)
+# Show files
 - script: |
     echo "Listing project files..."
     ls -la
   displayName: "Display Files"
 
-# Step 3: Validate HTML file
+# Validate index.html
 - script: |
     echo "Checking index.html..."
     if [ -f index.html ]; then
@@ -25,16 +25,14 @@ steps:
       echo "index.html not found ❌"
       exit 1
     fi
-  displayName: "Validate Frontend Files"
+  displayName: "Validate Files"
 
-# Step 4: Simulate Build
+# Build step
 - script: |
     echo "Building frontend project..."
-    echo "No compilation needed for HTML/CSS/JS"
   displayName: "Build Step"
 
-# Step 5: Simulate Deployment
+# Deploy step
 - script: |
-    echo "Deploying Blog Frontend..."
-    echo "Deployment successful ✅"
+    echo "Deploying project..."
   displayName: "Deploy Step"
